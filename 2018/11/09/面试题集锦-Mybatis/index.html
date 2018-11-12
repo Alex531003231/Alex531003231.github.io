@@ -81,18 +81,18 @@
 
 
 
-<meta name="description" content="持久层框架Mybatis相关面试题–首先，我们来简单介绍一下Mybatis框架： –mybatis是一个优秀的基于 java 的持久层框架，它内部封装了 jdbc，使开发者只需要关注 sql 语句本身，而不需要花费精力去处理加载驱动、创建连接、创建 statement 等繁杂的过程。mybatis通过 xml 或注解的方式将要执行的各种statement配置起来，并通过java对象和stateme">
+<meta name="description" content="持久层框架Mybatis相关面试题—-首先，我们来简单介绍一下Mybatis框架： —-mybatis是一个优秀的基于 java 的持久层框架，它内部封装了 jdbc，使开发者只需要关注 sql 语句本身，而不需要花费精力去处理加载驱动、创建连接、创建 statement 等繁杂的过程。mybatis通过 xml 或注解的方式将要执行的各种statement配置起来，并通过java对象和state">
 <meta name="keywords" content="面试题,SSM框架,Mybaits">
 <meta property="og:type" content="article">
 <meta property="og:title" content="面试题集锦-Mybatis">
 <meta property="og:url" content="https://lhbit.top/2018/11/09/面试题集锦-Mybatis/index.html">
 <meta property="og:site_name" content="木子丶Li">
-<meta property="og:description" content="持久层框架Mybatis相关面试题–首先，我们来简单介绍一下Mybatis框架： –mybatis是一个优秀的基于 java 的持久层框架，它内部封装了 jdbc，使开发者只需要关注 sql 语句本身，而不需要花费精力去处理加载驱动、创建连接、创建 statement 等繁杂的过程。mybatis通过 xml 或注解的方式将要执行的各种statement配置起来，并通过java对象和stateme">
+<meta property="og:description" content="持久层框架Mybatis相关面试题—-首先，我们来简单介绍一下Mybatis框架： —-mybatis是一个优秀的基于 java 的持久层框架，它内部封装了 jdbc，使开发者只需要关注 sql 语句本身，而不需要花费精力去处理加载驱动、创建连接、创建 statement 等繁杂的过程。mybatis通过 xml 或注解的方式将要执行的各种statement配置起来，并通过java对象和state">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-11-09T13:59:02.360Z">
+<meta property="og:updated_time" content="2018-11-12T13:41:02.990Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="面试题集锦-Mybatis">
-<meta name="twitter:description" content="持久层框架Mybatis相关面试题–首先，我们来简单介绍一下Mybatis框架： –mybatis是一个优秀的基于 java 的持久层框架，它内部封装了 jdbc，使开发者只需要关注 sql 语句本身，而不需要花费精力去处理加载驱动、创建连接、创建 statement 等繁杂的过程。mybatis通过 xml 或注解的方式将要执行的各种statement配置起来，并通过java对象和stateme">
+<meta name="twitter:description" content="持久层框架Mybatis相关面试题—-首先，我们来简单介绍一下Mybatis框架： —-mybatis是一个优秀的基于 java 的持久层框架，它内部封装了 jdbc，使开发者只需要关注 sql 语句本身，而不需要花费精力去处理加载驱动、创建连接、创建 statement 等繁杂的过程。mybatis通过 xml 或注解的方式将要执行的各种statement配置起来，并通过java对象和state">
 
 
 
@@ -349,6 +349,28 @@
           </span>
 
           
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/面试题/" itemprop="url" rel="index">
+                    <span itemprop="name">面试题</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
 
           
             
@@ -422,16 +444,35 @@
       
 
       
-        <h2 id="持久层框架Mybatis相关面试题"><a href="#持久层框架Mybatis相关面试题" class="headerlink" title="持久层框架Mybatis相关面试题"></a>持久层框架Mybatis相关面试题</h2><p>–首先，我们来简单介绍一下Mybatis框架：</p>
-<p>–mybatis是一个优秀的基于 java 的持久层框架，它内部封装了 jdbc，使开发者只需要关注 sql 语句本身，而不需要花费精力去处理加载驱动、创建连接、创建 statement 等繁杂的过程。<br>mybatis通过 xml 或注解的方式将要执行的各种statement配置起来，并通过java对象和statement 中sql 的动态参数进行映射生成最终执行的 sql 语句，最后由 mybatis 框架执行 sql 并将结果映射为 java 对象并返回。采用 ORM 思想解决了实体和数据库映射的问题，对 jdbc进行了封装，屏蔽了 jdbc api 底层访问细节，使我们不用与 jdbc api 打交道，就可以完成对数据库的持久化操作。</p>
-<h3 id="1-什么是框架？什么是mybatis框架"><a href="#1-什么是框架？什么是mybatis框架" class="headerlink" title="1.什么是框架？什么是mybatis框架"></a>1.什么是框架？什么是mybatis框架</h3><p>–框架（Framework）是整个或部分系统的可重用设计，表现为一组抽象构件及构件实例间交互的方法;另一种定义认为，框架是可被应用开发者定制的应用骨架。前者是从应用方面而后者是从目的方面给出的定义。简而言之，框架其实就是某种应用的半成品，就是一组组件，供你选用完成你自己的系统。简单说就是使用别人搭好的舞台，你来做表演。而且，框架一般是成熟的，不断升级的软件 </p>
-<p>–MyBatis 是一款优秀的持久层框架，它支持定制化 SQL、存储过程以及高级映射。MyBatis 避免了几乎所有的 JDBC 代码和手动设置参数以及获取结果集。MyBatis 可以使用简单的 XML 或注解来配置和映射原生信息，将接口和 Java 的 POJOs(Plain Ordinary Java Object,普通的 Java对象)映射成数据库中的记录 </p>
-<h3 id="2-Mybatis框架的优点和缺点都有哪些？"><a href="#2-Mybatis框架的优点和缺点都有哪些？" class="headerlink" title="2.Mybatis框架的优点和缺点都有哪些？"></a>2.Mybatis框架的优点和缺点都有哪些？</h3><p>–优点： </p>
-<p>–1.易于上手和掌握。</p>
-<p>– 2. sql写在xml里，便于统一管理和优化。 </p>
-<p> –3. 解除sql与程序代码的耦合。  </p>
-<p>–4. 提供映射标签，支持对象与数据库的orm字段关系映射  </p>
-<p>–5提供对象关系映射标签，支持对象关系组建维护  6. 提供xml标签，支持编写动态sql。  缺点：  1. sql工作量很大，尤其是字段多、关联表多时，更是如此。  2. sql依赖于数据库，导致数据库移植性差。  3. 由于xml里标签id必须唯一，导致DAO中方法不支持方法重载。  4. 字段映射标签和对象关系映射标签仅仅是对映射关系的描述，具体实现仍然依赖于sql。（比如配置了一对多Collection标签，如果sql里没有join子表或查询子表的话，查询后返回的对象是不具备对象关系的，即Collection的对象为null）  5. DAO层过于简单，对象组装的工作量较大。  6.  不支持级联更新、级联删除。  7. 编写动态sql时,不方便调试，尤其逻辑复杂时。  8 提供的写动态sql的xml标签功能简单（连struts都比不上），编写动态sql仍然受限，且可读性低。  9. 使用不当，容易导致N+1的sql性能问题。  10. 使用不当，关联查询时容易产生分页bug。  11. 若不查询主键字段，容易造成查询出的对象有“覆盖”现象。  12. 参数的数据类型支持不完善。（如参数为Date类型时，容易报没有get、set方法，需在参数上加@param）  13. 多参数时，使用不方便，功能不够强大。（目前支持的方法有map、对象、注解@param以及默认采用012索引位的方式）  14. 缓存使用不当，容易产生脏数据。   总结：  mybatis的优点其实也是mybatis的缺点，正因为mybatis使用简单，数据的可靠性、完整性的瓶颈便更多依赖于程序员对sql的使用水平上了。sql写在xml里，虽然方便了修改、优化和统一浏览，但可读性很低，调试也非常困难，也非常受限，无法像jdbc那样在代码里根据逻辑实现复杂动态sql拼接。mybatis简单看就是提供了字段映射和对象关系映射的jdbc，省去了数据赋值到对象的步骤而已，除此以外并无太多作为，不要把它想象成hibernate那样强大，简单小巧易用上手，方便浏览修改sql就是它最大的优点了。  mybatis适用于小型且程序员能力较低的项目和人群使用，对于中大型项目来说我并不推荐使用，如果觉得hibernate效率低的话（实际上也是使用不当所致，hibernate是实际上是不适用于拥有高负载的工程项目），还不如直接用spring提供的jdbc简单框架（Template），同样支持对象映射。 </p>
+        <h2 id="持久层框架Mybatis相关面试题"><a href="#持久层框架Mybatis相关面试题" class="headerlink" title="持久层框架Mybatis相关面试题"></a>持久层框架Mybatis相关面试题</h2><p>—-首先，我们来简单介绍一下Mybatis框架：</p>
+<p>—-mybatis是一个优秀的基于 java 的持久层框架，它内部封装了 jdbc，使开发者只需要关注 sql 语句本身，而不需要花费精力去处理加载驱动、创建连接、创建 statement 等繁杂的过程。<br>mybatis通过 xml 或注解的方式将要执行的各种statement配置起来，并通过java对象和statement 中sql 的动态参数进行映射生成最终执行的 sql 语句，最后由 mybatis 框架执行 sql 并将结果映射为 java 对象并返回。采用 ORM 思想解决了实体和数据库映射的问题，对 jdbc进行了封装，屏蔽了 jdbc api 底层访问细节，使我们不用与 jdbc api 打交道，就可以完成对数据库的持久化操作。</p>
+<h3 id="1-什么是框架？什么是mybatis框架"><a href="#1-什么是框架？什么是mybatis框架" class="headerlink" title="1.什么是框架？什么是mybatis框架"></a>1.什么是框架？什么是mybatis框架</h3><p>—-框架（Framework）是整个或部分系统的可重用设计，表现为一组抽象构件及构件实例间交互的方法;另一种定义认为，框架是可被应用开发者定制的应用骨架。前者是从应用方面而后者是从目的方面给出的定义。简而言之，框架其实就是某种应用的半成品，就是一组组件，供你选用完成你自己的系统。简单说就是使用别人搭好的舞台，你来做表演。而且，框架一般是成熟的，不断升级的软件 </p>
+<p>—-MyBatis 是一款优秀的持久层框架，它支持定制化 SQL、存储过程以及高级映射。MyBatis 避免了几乎所有的 JDBC 代码和手动设置参数以及获取结果集。MyBatis 可以使用简单的 XML 或注解来配置和映射原生信息，将接口和 Java 的 POJOs(Plain Ordinary Java Object,普通的 Java对象)映射成数据库中的记录 </p>
+<h3 id="2-Mybatis框架的优点和缺点都有哪些？"><a href="#2-Mybatis框架的优点和缺点都有哪些？" class="headerlink" title="2.Mybatis框架的优点和缺点都有哪些？"></a>2.Mybatis框架的优点和缺点都有哪些？</h3><h4 id="优点："><a href="#优点：" class="headerlink" title="优点："></a>优点：</h4><ol>
+<li>易于上手和掌握。</li>
+<li>sql写在xml里，便于统一管理和优化。 </li>
+<li>解除sql与程序代码的耦合。  </li>
+<li>提供映射标签，支持对象与数据库的orm字段关系映射  </li>
+<li>提供对象关系映射标签，支持对象关系组建维护  </li>
+<li>提供xml标签，支持编写动态sql。 </li>
+</ol>
+<h4 id="缺点："><a href="#缺点：" class="headerlink" title="缺点："></a>缺点：</h4><ol>
+<li>sql工作量很大，尤其是字段多、关联表多时，更是如此。  </li>
+<li>sql依赖于数据库，导致数据库移植性差。  </li>
+<li>由于xml里标签id必须唯一，导致DAO中方法不支持方法重载。  </li>
+<li>字段映射标签和对象关系映射标签仅仅是对映射关系的描述，具体实现仍然依赖于sql。（比如配置了一对多Collection标签，如果sql里没有join子表或查询子表的话，查询后返回的对象是不具备对象关系的，即Collection的对象为null）  </li>
+<li>DAO层过于简单，对象组装的工作量较大。  </li>
+<li>不支持级联更新、级联删除。  </li>
+<li>编写动态sql时,不方便调试，尤其逻辑复杂时。  </li>
+<li>提供的写动态sql的xml标签功能简单（连struts都比不上），编写动态sql仍然受限，且可读性低。  </li>
+<li>使用不当，容易导致N+1的sql性能问题。  </li>
+<li>使用不当，关联查询时容易产生分页bug。  </li>
+<li>若不查询主键字段，容易造成查询出的对象有“覆盖”现象。   </li>
+<li>参数的数据类型支持不完善。（如参数为Date类型时，容易报没有get、set方法，需在参数上加@param）  </li>
+<li>多参数时，使用不方便，功能不够强大。（目前支持的方法有map、对象、注解@param以及默认采用012索引位的方式）  </li>
+<li>缓存使用不当，容易产生脏数据。   </li>
+</ol>
+<h4 id="总结："><a href="#总结：" class="headerlink" title="总结："></a>总结：</h4><p>​    mybatis的优点其实也是mybatis的缺点，正因为mybatis使用简单，数据的可靠性、完整性的瓶颈便更多依赖于程序员对sql的使用水平上了。sql写在xml里，虽然方便了修改、优化和统一浏览，但可读性很低，调试也非常困难，也非常受限，无法像jdbc那样在代码里根据逻辑实现复杂动态sql拼接。mybatis简单看就是提供了字段映射和对象关系映射的jdbc，省去了数据赋值到对象的步骤而已，除此以外并无太多作为，不要把它想象成hibernate那样强大，简单小巧易用上手，方便浏览修改sql就是它最大的优点了。  mybatis适用于小型且程序员能力较低的项目和人群使用，对于中大型项目来说我并不推荐使用，如果觉得hibernate效率低的话（实际上也是使用不当所致，hibernate是实际上是不适用于拥有高负载的工程项目），还不如直接用spring提供的jdbc简单框架（Template），同样支持对象映射。</p>
 
       
     </div>
@@ -511,7 +552,7 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/11/12/Oracle数le数据库篇二/" rel="prev" title="Oracle数据库篇二">
+              <a href="/2018/11/12/Oracle数据库篇二/" rel="prev" title="Oracle数据库篇二">
                 Oracle数据库篇二 <i class="fa fa-chevron-right"></i>
               </a>
             
@@ -606,7 +647,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-count">2</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -616,8 +657,8 @@
               
               
               <div class="site-state-item site-state-tags">
-                <a href="/about/index.html">
-                  <span class="site-state-item-count">6</span>
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">5</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -671,11 +712,19 @@
               <ul class="links-of-blogroll-list">
                 
                   <li class="links-of-blogroll-item">
+                    <a href="http://www.runoob.com/" title="菜鸟教程" target="_blank">菜鸟教程</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
                     <a href="https://wangwangit.top/" title="也许还会爱" target="_blank">也许还会爱</a>
                   </li>
                 
                   <li class="links-of-blogroll-item">
                     <a href="https://evenfzq.github.io/" title="EvenFzq" target="_blank">EvenFzq</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://machangwang.top/" title="老马" target="_blank">老马</a>
                   </li>
                 
               </ul>
@@ -701,7 +750,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#持久层框架Mybatis相关面试题"><span class="nav-number">1.</span> <span class="nav-text">持久层框架Mybatis相关面试题</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-什么是框架？什么是mybatis框架"><span class="nav-number">1.1.</span> <span class="nav-text">1.什么是框架？什么是mybatis框架</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-Mybatis框架的优点和缺点都有哪些？"><span class="nav-number">1.2.</span> <span class="nav-text">2.Mybatis框架的优点和缺点都有哪些？</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#持久层框架Mybatis相关面试题"><span class="nav-number">1.</span> <span class="nav-text">持久层框架Mybatis相关面试题</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-什么是框架？什么是mybatis框架"><span class="nav-number">1.1.</span> <span class="nav-text">1.什么是框架？什么是mybatis框架</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-Mybatis框架的优点和缺点都有哪些？"><span class="nav-number">1.2.</span> <span class="nav-text">2.Mybatis框架的优点和缺点都有哪些？</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#优点："><span class="nav-number">1.2.1.</span> <span class="nav-text">优点：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#缺点："><span class="nav-number">1.2.2.</span> <span class="nav-text">缺点：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#总结："><span class="nav-number">1.2.3.</span> <span class="nav-text">总结：</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>

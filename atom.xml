@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://lhbit.top/"/>
-  <updated>2018-11-12T13:05:58.135Z</updated>
+  <updated>2018-11-12T13:40:58.367Z</updated>
   <id>https://lhbit.top/</id>
   
   <author>
@@ -18,10 +18,10 @@
   
   <entry>
     <title>Oracle数据库篇二</title>
-    <link href="https://lhbit.top/2018/11/12/Oracle%E6%95%B0le%E6%95%B0%E6%8D%AE%E5%BA%93%E7%AF%87%E4%BA%8C/"/>
-    <id>https://lhbit.top/2018/11/12/Oracle数le数据库篇二/</id>
+    <link href="https://lhbit.top/2018/11/12/Oracle%E6%95%B0%E6%8D%AE%E5%BA%93%E7%AF%87%E4%BA%8C/"/>
+    <id>https://lhbit.top/2018/11/12/Oracle数据库篇二/</id>
     <published>2018-11-12T12:17:14.000Z</published>
-    <updated>2018-11-12T13:05:58.135Z</updated>
+    <updated>2018-11-12T13:40:58.367Z</updated>
     
     <summary type="html">
     
@@ -35,10 +35,12 @@
     
     </summary>
     
+      <category term="SQL" scheme="https://lhbit.top/categories/SQL/"/>
     
-      <category term="sql" scheme="https://lhbit.top/tags/sql/"/>
     
-      <category term="NoSql" scheme="https://lhbit.top/tags/NoSql/"/>
+      <category term="SQL" scheme="https://lhbit.top/tags/SQL/"/>
+    
+      <category term="NoSQL" scheme="https://lhbit.top/tags/NoSQL/"/>
     
   </entry>
   
@@ -47,7 +49,7 @@
     <link href="https://lhbit.top/2018/11/09/%E9%9D%A2%E8%AF%95%E9%A2%98%E9%9B%86%E9%94%A6-Mybatis/"/>
     <id>https://lhbit.top/2018/11/09/面试题集锦-Mybatis/</id>
     <published>2018-11-09T13:40:58.000Z</published>
-    <updated>2018-11-09T13:59:02.360Z</updated>
+    <updated>2018-11-12T13:41:02.990Z</updated>
     
     <summary type="html">
     
@@ -60,6 +62,8 @@
       
     
     </summary>
+    
+      <category term="面试题" scheme="https://lhbit.top/categories/%E9%9D%A2%E8%AF%95%E9%A2%98/"/>
     
     
       <category term="面试题" scheme="https://lhbit.top/tags/%E9%9D%A2%E8%AF%95%E9%A2%98/"/>
@@ -75,16 +79,16 @@
     <link href="https://lhbit.top/2018/11/07/MySql%E5%9F%BA%E7%A1%80/"/>
     <id>https://lhbit.top/2018/11/07/MySql基础/</id>
     <published>2018-11-07T08:33:47.000Z</published>
-    <updated>2018-11-07T08:46:10.445Z</updated>
+    <updated>2018-11-12T13:36:05.538Z</updated>
     
     <summary type="html">
     
     </summary>
     
-      <category term="关系型数据库" scheme="https://lhbit.top/categories/%E5%85%B3%E7%B3%BB%E5%9E%8B%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
+      <category term="SQL" scheme="https://lhbit.top/categories/SQL/"/>
     
     
-      <category term="Sql" scheme="https://lhbit.top/tags/Sql/"/>
+      <category term="SQL" scheme="https://lhbit.top/tags/SQL/"/>
     
   </entry>
   
