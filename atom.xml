@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://lhbit.top/"/>
-  <updated>2018-11-07T08:46:10.445Z</updated>
+  <updated>2018-11-12T12:19:00.001Z</updated>
   <id>https://lhbit.top/</id>
   
   <author>
@@ -15,6 +15,60 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Oracle数le数据库篇二</title>
+    <link href="https://lhbit.top/2018/11/12/Oracle%E6%95%B0le%E6%95%B0%E6%8D%AE%E5%BA%93%E7%AF%87%E4%BA%8C/"/>
+    <id>https://lhbit.top/2018/11/12/Oracle数le数据库篇二/</id>
+    <published>2018-11-12T12:17:14.000Z</published>
+    <updated>2018-11-12T12:19:00.001Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;Oracle-第二篇&quot;&gt;&lt;a href=&quot;#Oracle-第二篇&quot; class=&quot;headerlink&quot; title=&quot;Oracle 第二篇&quot;&gt;&lt;/a&gt;Oracle 第二篇&lt;/h1&gt;&lt;h2 id=&quot;视图&quot;&gt;&lt;a href=&quot;#视图&quot;
+        
+      
+    
+    </summary>
+    
+    
+      <category term="sql" scheme="https://lhbit.top/tags/sql/"/>
+    
+      <category term="NoSql" scheme="https://lhbit.top/tags/NoSql/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>面试题集锦-Mybatis</title>
+    <link href="https://lhbit.top/2018/11/09/%E9%9D%A2%E8%AF%95%E9%A2%98%E9%9B%86%E9%94%A6-Mybatis/"/>
+    <id>https://lhbit.top/2018/11/09/面试题集锦-Mybatis/</id>
+    <published>2018-11-09T13:40:58.000Z</published>
+    <updated>2018-11-09T13:59:02.360Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;持久层框架Mybatis相关面试题&quot;&gt;&lt;a href=&quot;#持久层框架Mybatis相关面试题&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+    
+      <category term="面试题" scheme="https://lhbit.top/tags/%E9%9D%A2%E8%AF%95%E9%A2%98/"/>
+    
+      <category term="SSM框架" scheme="https://lhbit.top/tags/SSM%E6%A1%86%E6%9E%B6/"/>
+    
+      <category term="Mybaits" scheme="https://lhbit.top/tags/Mybaits/"/>
+    
+  </entry>
   
   <entry>
     <title>MySql基础</title>
