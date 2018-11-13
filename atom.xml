@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://lhbit.top/"/>
-  <updated>2018-11-12T13:40:58.367Z</updated>
+  <updated>2018-11-13T03:57:41.740Z</updated>
   <id>https://lhbit.top/</id>
   
   <author>
@@ -15,6 +15,36 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>mven高级之SSM框架依赖jar包管理</title>
+    <link href="https://lhbit.top/2018/11/13/mven%E9%AB%98%E7%BA%A7%E4%B9%8BSSM%E6%A1%86%E6%9E%B6%E4%BE%9D%E8%B5%96jar%E5%8C%85%E7%AE%A1%E7%90%86/"/>
+    <id>https://lhbit.top/2018/11/13/mven高级之SSM框架依赖jar包管理/</id>
+    <published>2018-11-13T03:53:47.000Z</published>
+    <updated>2018-11-13T03:57:41.740Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;maven高级之SSM框架依赖jar包管理&quot;&gt;&lt;a href=&quot;#maven高级之SSM框架依赖jar包管理&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+      <category term="maven工程" scheme="https://lhbit.top/categories/maven%E5%B7%A5%E7%A8%8B/"/>
+    
+    
+      <category term="maven" scheme="https://lhbit.top/tags/maven/"/>
+    
+      <category term="SSM整合" scheme="https://lhbit.top/tags/SSM%E6%95%B4%E5%90%88/"/>
+    
+      <category term="工程jar包管理" scheme="https://lhbit.top/tags/%E5%B7%A5%E7%A8%8Bjar%E5%8C%85%E7%AE%A1%E7%90%86/"/>
+    
+  </entry>
   
   <entry>
     <title>Oracle数据库篇二</title>
