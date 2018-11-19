@@ -1,0 +1,1116 @@
+﻿<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="SSM框架,源码分析,">
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="木子丶Li" type="application/atom+xml">
+
+
+
+
+
+
+<meta name="description" content="SSM框架执行流程及底层源码讲解—- 本篇文章主要讲解市面流行的项目框架:SpringMVC+Spring+MyBatis  (简称SSM) 的执行流程以及执行过程中各个关键技术的底层实现原理。(博主接触java编程语言近两年时间，一直对框架实现原理懵懵懂懂，终于下定决心研究一番底层源码，如有讲解不周之处还望海涵，如有异议或不同见解，请评论区留言，谢谢！) SpringMVC框架简单介绍:—-Sp">
+<meta name="keywords" content="SSM框架,源码分析">
+<meta property="og:type" content="article">
+<meta property="og:title" content="SSM框架执行流程及底层源码讲解">
+<meta property="og:url" content="https://lhbit.top/2018/11/18/SSM框架执行流程及底层源码讲解/index.html">
+<meta property="og:site_name" content="木子丶Li">
+<meta property="og:description" content="SSM框架执行流程及底层源码讲解—- 本篇文章主要讲解市面流行的项目框架:SpringMVC+Spring+MyBatis  (简称SSM) 的执行流程以及执行过程中各个关键技术的底层实现原理。(博主接触java编程语言近两年时间，一直对框架实现原理懵懵懂懂，终于下定决心研究一番底层源码，如有讲解不周之处还望海涵，如有异议或不同见解，请评论区留言，谢谢！) SpringMVC框架简单介绍:—-Sp">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://lhbit.top/image/ssm/springmvc.jpg">
+<meta property="og:image" content="https://lhbit.top/image/ssm/spring的类层次图.jpg">
+<meta property="og:image" content="https://lhbit.top/image/ssm/spring工厂的类结构图.jpg">
+<meta property="og:image" content="https://lhbit.top/image/ssm/contextInitialized.jpg">
+<meta property="og:image" content="https://lhbit.top/image/ssm/initWebApplicationContext.jpg">
+<meta property="og:image" content="https://lhbit.top/image/ssm/创建WebApplicationContext.jpg">
+<meta property="og:image" content="https://lhbit.top/image/ssm/加载spring配置文件.jpg">
+<meta property="og:image" content="https://lhbit.top/image/ssm/初始化并创建bean.jpg">
+<meta property="og:image" content="https://lhbit.top/image/ssm/销毁context容器.jpg">
+<meta property="og:image" content="https://lhbit.top/image/ssm/Mybatis层次结构图.jpg">
+<meta property="og:image" content="https://lhbit.top/image/ssm/Mybatis运行流程.jpg">
+<meta property="og:image" content="https://lhbit.top/image/ssm/Mybatis执行流程总结.jpg">
+<meta property="og:updated_time" content="2018-11-19T15:40:24.759Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="SSM框架执行流程及底层源码讲解">
+<meta name="twitter:description" content="SSM框架执行流程及底层源码讲解—- 本篇文章主要讲解市面流行的项目框架:SpringMVC+Spring+MyBatis  (简称SSM) 的执行流程以及执行过程中各个关键技术的底层实现原理。(博主接触java编程语言近两年时间，一直对框架实现原理懵懵懂懂，终于下定决心研究一番底层源码，如有讲解不周之处还望海涵，如有异议或不同见解，请评论区留言，谢谢！) SpringMVC框架简单介绍:—-Sp">
+<meta name="twitter:image" content="https://lhbit.top/image/ssm/springmvc.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"hide","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://lhbit.top/2018/11/18/SSM框架执行流程及底层源码讲解/">
+
+
+
+
+
+  <title>SSM框架执行流程及底层源码讲解 | 木子丶Li</title>
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?d4615b6450d8036841fc12d9cd212d6f";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+	<a href="https://github.com/Alex531003231/Alex531003231.github.io" class="github-corner" aria-label="View source on GitHub"><svg width="80" height="80" viewbox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"/>
+	<path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"/>
+	<path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"/>
+	</svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+	
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">木子丶Li</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-schedule">
+          <a href="/schedule/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-calendar"></i> <br>
+            
+            日程表
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-sitemap">
+          <a href="/sitemap.xml" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-sitemap"></i> <br>
+            
+            站点地图
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-commonweal">
+          <a href="/404/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br>
+            
+            公益404
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://lhbit.top/2018/11/18/SSM框架执行流程及底层源码讲解/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="LiHaibo">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/../image/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="木子丶Li">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">SSM框架执行流程及底层源码讲解</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-11-18T19:58:47+08:00">
+                2018-11-18
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/SSM框架/" itemprop="url" rel="index">
+                    <span itemprop="name">SSM框架</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/SSM框架/源码分析/" itemprop="url" rel="index">
+                    <span itemprop="name">源码分析</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/11/18/SSM框架执行流程及底层源码讲解/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2018/11/18/SSM框架执行流程及底层源码讲解/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+		  
+		    <span class="post-meta-divider">|</span>
+		    <span id="busuanzi_value_page_pv"></span>次阅读
+		  
+		  
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  2.6k 字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  9 分钟
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="SSM框架执行流程及底层源码讲解"><a href="#SSM框架执行流程及底层源码讲解" class="headerlink" title="SSM框架执行流程及底层源码讲解"></a>SSM框架执行流程及底层源码讲解</h1><p>—- 本篇文章主要讲解市面流行的项目框架:SpringMVC+Spring+MyBatis  (简称SSM) 的执行流程以及执行过程中各个关键技术的底层实现原理。(博主接触java编程语言近两年时间，一直对框架实现原理懵懵懂懂，终于下定决心研究一番底层源码，如有讲解不周之处还望海涵，如有异议或不同见解，请评论区留言，谢谢！)</p>
+<h2 id="SpringMVC框架"><a href="#SpringMVC框架" class="headerlink" title="SpringMVC框架"></a>SpringMVC框架</h2><h3 id="简单介绍"><a href="#简单介绍" class="headerlink" title="简单介绍:"></a>简单介绍:</h3><p>—-SpringMVC 是一种基于 Java 的实现 MVC 设计模型的请求驱动类型的轻量级 Web 框架，属于 Spring<br>FrameWork 的后续产品，已经融合在 Spring Web Flow 里面。Spring 框架提供了构建 Web 应用程序的全功<br>能 MVC 模块。使用 Spring 可插入的 MVC 架构，从而在使用 Spring 进行 WEB 开发时，可以选择使用 Spring<br>的 Spring MVC 框架或集成其他 MVC 开发框架，如 Struts1(现在一般不用)，Struts2 等。SpringMVC 已经成为目前最主流的 MVC 框架之一，并且随着 Spring3.0 的发布，全面超越 Struts2，成为最优秀的 MVC 框架。它通过一套注解，让一个简单的 Java 类成为处理请求的控制器，而无须实现任何接口。同时它还支持RESTful 编程风格的请求。</p>
+<h3 id="清晰的角色划分"><a href="#清晰的角色划分" class="headerlink" title="清晰的角色划分"></a>清晰的角色划分</h3><ul>
+<li>前端控制器（DispatcherServlet）</li>
+<li>处理器映射器（HandlerMapping）</li>
+<li>处理器适配器（HandlerAdapter）</li>
+<li>视图解析器（ViewResolver）</li>
+<li>处理器或页面控制器（Controller）</li>
+<li>验证器（ Validator）</li>
+<li>命令对象（Command 请求参数绑定到的对象就叫命令对象）</li>
+<li>表单对象（Form Object 提供给表单展示和提交到的对象就叫表单对象）</li>
+</ul>
+<h3 id="单个业务执行流程："><a href="#单个业务执行流程：" class="headerlink" title="单个业务执行流程："></a>单个业务执行流程：</h3><ol>
+<li>tomcat启动: 加载应用的web.xml</li>
+<li>实例化并初始化Servlet</li>
+<li>加载spring.xml配置文件创建spring容器，根据配置初始化容器中的对象。</li>
+<li>浏览器客户端发送请求，例如Hello()</li>
+<li>请求到达前端控制器：DispatcherServlet</li>
+<li>前端控制器截取动作名称Hello()，并从@RequestMapping中找具体的Hello方法</li>
+<li>找到后，执行控制器中的方法</li>
+<li>假如方法有返回值，则根据返回值通过InternalResourceViewResolver找到相应的结果视图</li>
+<li>响应给浏览器，展示结果</li>
+</ol>
+<h3 id="详细执行流程"><a href="#详细执行流程" class="headerlink" title="详细执行流程:"></a>详细执行流程:</h3><ol>
+<li>前端页面发送Request请求给前端控制器:DispatcherServlet</li>
+<li>DispatcherServlet 请求查找Handler 到处理器映射器HandlerMapping</li>
+<li>HandlerMapping 返回一个执行链：HandlerExecutionChain{ HandlerInterceptor1  HandlerInterceptor2    HandlerInterceptor3  ……      Handler }   给前端控制器DispatcherServlet</li>
+<li>前端控制器请求适配器HandlerAdapter执行</li>
+<li>处理器Controller执行逻辑，调用业务层(Service层)，业务层调用持久层(DAO)层，然后逐层返回到Controller</li>
+<li>Controller 返回 ModelAndView 给适配器</li>
+<li>适配器返回ModelAndView 给 DispatcherServlet</li>
+<li>DispatcherServlet请求视图解析器(ViewResolver)进行视图解析， </li>
+<li>视图解析器返回View给DispatcherServlet</li>
+<li>进行视图渲染，将模型数据填充到request域</li>
+<li>DispatcherServlet给前台页面response响应</li>
+</ol>
+<p><img src="/image/ssm/springmvc.jpg" alt="springmvc基于组件的"></p>
+<h2 id="Spring框架-程序员的春天"><a href="#Spring框架-程序员的春天" class="headerlink" title="Spring框架(程序员的春天)"></a>Spring框架(程序员的春天)</h2><h3 id="简单介绍："><a href="#简单介绍：" class="headerlink" title="简单介绍："></a>简单介绍：</h3><p>—- Spring是分层的 Java SE/EE应用 full-stack 轻量级开源框架，以 IoC（Inverse Of Control：反转控制）和 AOP（Aspect Oriented Programming：面向切面编程）为内核，提供了展现层 SpringMVC 和持久层 Spring JDBC 以及业务层事务管理等众多的企业级应用技术，还能整合开源世界众多著名的第三方框架和类库，逐渐成为使用最多的Java EE 企业应用开源框架。</p>
+<p>—- 先上两张Spring的类结构图</p>
+<p><img src="/image/ssm/spring的类层次图.jpg" alt="spring类层次图"></p>
+<p><img src="/image/ssm/spring工厂的类结构图.jpg" alt="spring工厂的类结构图"></p>
+<h3 id="spring框架执行流程"><a href="#spring框架执行流程" class="headerlink" title="spring框架执行流程"></a>spring框架执行流程</h3><p>—- 使用spring配置,需要在web.xml中配置一个spring的监听器和启动参数（context-param），如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- 配置加载类路径的配置文件 --&gt;</span><br><span class="line">&lt;context-param&gt;</span><br><span class="line">	&lt;param-name&gt;contextConfigLocation&lt;/param-name&gt;    </span><br><span class="line">	&lt;param-value&gt;classpath*:applicationContext.xml&lt;/param-value&gt;</span><br><span class="line">&lt;/context-param&gt;</span><br><span class="line"></span><br><span class="line">&lt;!-- 配置监听器 --&gt;</span><br><span class="line">&lt;listener&gt;    </span><br><span class="line">	&lt;listener-class&gt;org.springframework.web.context.ContextLoaderListener&lt;/listener-class&gt;&lt;/listener&gt;</span><br></pre></td></tr></table></figure>
+<p>—- web容器启动时，下面为spring加载执行步骤：</p>
+<ol>
+<li><p>执行web.xml中的ContextLoaderListener监听器</p>
+</li>
+<li><p>初始化ContextLoaderListener中的contextInitialized方法</p>
+<p><img src="/image/ssm/contextInitialized.jpg" alt="ContextLoaderListener中的contextInitialized方法"></p>
+</li>
+<li><p>contextInitialized方法中调用父类（ContextLoader）的initWebApplicationContext方法  </p>
+<p><img src="/image/ssm/initWebApplicationContext.jpg" alt="initWebApplicationContext"></p>
+</li>
+<li><p>initWebApplicationContext方法中执行了三个任务  </p>
+<ul>
+<li><p>创建WebApplicationContext容器 </p>
+<p><img src="/image/ssm/创建WebApplicationContext.jpg" alt="创建WebApplicationContext容器 "></p>
+</li>
+<li><p>加载context-param中配置的spring配置文件</p>
+</li>
+<li><p>初始化配置文件及创建配置文件中的bean  </p>
+</li>
+</ul>
+<p><img src="/image/ssm/加载spring配置文件.jpg" alt="加载spring配置文件.jpg"></p>
+<p><img src="/image/ssm/初始化并创建bean.jpg" alt="初始化并创建bean.jpg"></p>
+</li>
+</ol>
+<p>—- 最后，当web容器停止时候会执行ContextLoaderListener的contextDestroyed方法销毁context容器 </p>
+<p><img src="/image/ssm/销毁context容器.jpg" alt="销毁context容器.jpg"></p>
+<h2 id="MyBatis框架"><a href="#MyBatis框架" class="headerlink" title="MyBatis框架"></a>MyBatis框架</h2><h3 id="简单介绍：-1"><a href="#简单介绍：-1" class="headerlink" title="简单介绍："></a>简单介绍：</h3><p>—- MyBatis 是支持定制化 SQL、存储过程以及高级映射的优秀的持久层框架。MyBatis 避免了几乎所有的 JDBC 代码和手动设置参数以及获取结果集。MyBatis 可以对配置和原生Map使用简单的 XML 或注解，将接口和 Java 的 POJOs(Plain Old Java Objects,普通的 Java对象)映射成数据库中的记录。 </p>
+<h3 id="MyBatis主要的类"><a href="#MyBatis主要的类" class="headerlink" title="MyBatis主要的类"></a>MyBatis主要的类</h3><ul>
+<li>Configuration        MyBatis所有的配置信息都维持在Configuration对象之中。</li>
+<li>SqlSession            作为MyBatis工作的主要顶层API，表示和数据库交互的会话, 完成必要数据库增删改查功能</li>
+<li>Executor               MyBatis执行器，是MyBatis 调度的核心，负责SQL语句的生成和查询缓存的维护</li>
+<li>StatementHandler 封装了JDBC Statement操作，负责对JDBC statement 的操作，如设置参数、将Statement结果集转换成List集合。</li>
+<li>ParameterHandler  负责对用户传递的参数转换成JDBC Statement 所需要的参数，</li>
+<li>ResultSetHandler   负责将JDBC返回的ResultSet结果集对象转换成List类型的集合；</li>
+<li>TypeHandler          负责java数据类型和jdbc数据类型之间的映射和转换</li>
+<li>MappedStatement  MappedStatement维护了一条&lt;select|update|delete|insert&gt;节点的封装，</li>
+<li>SqlSource              负责根据用户传递的parameterObject，动态地生成SQL语句，将信息封装到BoundSql对象中，并返回</li>
+<li>BoundSql              表示动态生成的SQL语句以及相应的参数信息</li>
+</ul>
+<p>　　以上几个类在SQL操作中都会涉及，在SQL操作中重点关注下SQL参数什么时候写入和结果集怎么转换为Java对象，这两个过程正好对应的类是PreparedStatementHandler和ResultSetHandler类。</p>
+<p><img src="/image/ssm/Mybatis层次结构图.jpg" alt="MyBatis层次结构图"></p>
+<h3 id="Mybatis执行流程"><a href="#Mybatis执行流程" class="headerlink" title="Mybatis执行流程"></a>Mybatis执行流程</h3><p>—- 首先，SqlSessionFactory 会话工厂会加载 SqlMapConfig.xml 配置文件信息，然后生成一个可以与数据库交互的会话实例类 SqlSession，会话实例类 SqlSession 会根据 Mapper 配置文件中的 sql 配置，去执行相应的增删改查操作。这样，MyBatis 就实现了与数据库的交互功能。具体流程图如下：</p>
+<p><img src="/image/ssm/Mybatis运行流程.jpg" alt="Mybatis运行流程"></p>
+<p>—- 下面简单介绍总结各个组件的含义和功能：</p>
+<p><img src="/image/ssm/Mybatis执行流程总结.jpg" alt="Mybatis执行流程总结.jpg"></p>
+<p>　　<strong>Configuration.xml</strong>：该配置文件是MyBatis的全局配置文件，在这个文件中可以配置诸多项目，但是一般项目中，并不会配置太多内容，常用的内容是别名设置，拦截器设置等，至于环境设置与Mapper映射文件的注册会转移到Spring配置文件中（SSM整合之后），而其余大部分的配置项都采用默认的配置。</p>
+<p>　　<strong>XMLConfigBuilder</strong>：该类是XML配置构建者类，是用来通过XML配置文件来构建Configuration对象实例，构建的过程就是解析Configuration.xml配置文件的过程，期间会将从配置文件中获取到的指定标签的值逐个添加到之前创建好的默认Configuration对象实例中。</p>
+<p>　　<strong>Configuration</strong>：该类是MyBatis的配置类，创建这个类的目的就是为了使用其对象作为项目全局配置对象，这样通过配置文件配置的信息可以保存在这个配置对象中，而这个配置对象在创建好之后是保存在JVM的Heap内存中的，方便随时读取。不然每次需要配置信息的时候都要临时从磁盘配置文件中获取，代码复用性差的同时，也不利于开发。</p>
+<p>　　<strong>SqlSessionFactoryBuilder</strong>：该类是SqlSessionFactory（会话工厂）的构建者类，之前描述的操作其实全是从这里面开启的，首先就是调用XMLConfigBuilder类的构造器来创建一个XML配置构建器对象，利用这个构建器对象来调用其解析方法parse()来完成Configuration对象的创建，之后以这个配置对象为参数调用会话工厂构建者类中的build(Configuration config)方法来完成会话工厂对象的构建。</p>
+<p>　　<strong>SqlsessionFactory</strong>：该接口是会话工厂，是用来生产会话的工厂接口，DefaultSqlSessionFactory是其实现类，是真正生产会话的工厂类，这个类的实例的生命周期是全局的，它只会在首次调用时生成一个实例（单例模式），就一直存在直到服务器关闭。</p>
+<p>　　<strong>openSession()</strong>：在最后的build(Configuration config)方法中会返回一个DefaultSqlSessionFactory类的实例，这个类是MyBatis提供的默认会话工厂类，而我们使用的也正是这个类中的来openSession()方法来完成SqlSession对象的创建。</p>
+<p>　　<strong>SqlSession</strong>：该接口是会话，是项目与数据库之间的会话，类似于客户端与服务器之间的会话（session），这个SqlSession的生命周期是方法级的，因为他是非线程安全的，针对每一次数据库访问都要创建一个SqlSession，获取到返回结果之后，这个SqlSession就会被废弃。这区别于SqlSessionFactory的生命周期。</p>
+<p>　　<strong>Executor</strong>：执行器接口，SqlSession会话是面向程序员的，而内部真正执行数据库操作的却是Executor执行器，可以将Executor看作是面向MyBatis执行环境的，SqlSession就是门面货，Executor才是实干家。通过SqlSession产生的数据库操作，全部是通过调用Executor执行器来完成的。</p>
+<p>　　<strong>StatementHandler</strong>：该类是Statement处理器，封装了Statement的各种数据库操作方法execute()，可见MyBatis其实就是将操作数据库的JDBC操作封装起来的一个框架，同时还实现了ORM罢了。</p>
+<p>　　<strong>ResultSetHandler</strong>：结果集处理器，如果是查询操作，必定会有返回结果，针对返回结果的操作，就要使用ResultSetHandler来进行处理，这个是由StatementHandler来进行调用的。这个处理器的作用就是对返回结果进行处理。</p>
+<p>——————————————————暂时先写到这里，本文持续更新，未完待续——————————————</p>
+<h2 id="SSM-整合"><a href="#SSM-整合" class="headerlink" title="SSM 整合"></a>SSM 整合</h2>
+      
+    </div>
+    
+    
+    
+
+	<div>
+		
+		﻿<div>
+
+    <div style="text-align:center;color: #ccc;font-size:14px;">-------------本文结束<i class="fa fa-paw"></i>感谢您的阅读-------------</div>
+
+</div>
+
+		
+	</div>
+	
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/image/alipay.jpg" alt="LiHaibo 支付宝">
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/SSM框架/" rel="tag"><i class="fa fa-tag"></i> SSM框架</a>
+          
+            <a href="/tags/源码分析/" rel="tag"><i class="fa fa-tag"></i> 源码分析</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/11/13/mven高级之SSM框架依赖jar包管理/" rel="next" title="mven高级之SSM框架依赖jar包管理">
+                <i class="fa fa-chevron-left"></i> mven高级之SSM框架依赖jar包管理
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+    </div>
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/../image/avatar.jpg" alt="LiHaibo">
+            
+              <p class="site-author-name" itemprop="name">LiHaibo</p>
+              <p class="site-description motion-element" itemprop="description">曾梦想仗剑走天涯,后来bug太多没去成   `0_0`</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/Alex531003231" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:531003231@qq.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://blog.csdn.net/L531003231" target="_blank" title="CSDN">
+                      
+                        <i class="fa fa-fw fa-globe"></i>CSDN</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                友情链接
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.runoob.com/" title="菜鸟教程" target="_blank">菜鸟教程</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://wangwangit.top/" title="也许还会爱" target="_blank">也许还会爱</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://evenfzq.github.io/" title="EvenFzq" target="_blank">EvenFzq</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://machangwang.top/" title="老马" target="_blank">老马</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+		
+		<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="86" src="//music.163.com/outchain/player?type=2&id=419254438&auto=0&height=66"></iframe>
+		
+		
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#SSM框架执行流程及底层源码讲解"><span class="nav-number">1.</span> <span class="nav-text">SSM框架执行流程及底层源码讲解</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#SpringMVC框架"><span class="nav-number">1.1.</span> <span class="nav-text">SpringMVC框架</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#简单介绍"><span class="nav-number">1.1.1.</span> <span class="nav-text">简单介绍:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#清晰的角色划分"><span class="nav-number">1.1.2.</span> <span class="nav-text">清晰的角色划分</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#单个业务执行流程："><span class="nav-number">1.1.3.</span> <span class="nav-text">单个业务执行流程：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#详细执行流程"><span class="nav-number">1.1.4.</span> <span class="nav-text">详细执行流程:</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Spring框架-程序员的春天"><span class="nav-number">1.2.</span> <span class="nav-text">Spring框架(程序员的春天)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#简单介绍："><span class="nav-number">1.2.1.</span> <span class="nav-text">简单介绍：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#spring框架执行流程"><span class="nav-number">1.2.2.</span> <span class="nav-text">spring框架执行流程</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#MyBatis框架"><span class="nav-number">1.3.</span> <span class="nav-text">MyBatis框架</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#简单介绍：-1"><span class="nav-number">1.3.1.</span> <span class="nav-text">简单介绍：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#MyBatis主要的类"><span class="nav-number">1.3.2.</span> <span class="nav-text">MyBatis主要的类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Mybatis执行流程"><span class="nav-number">1.3.3.</span> <span class="nav-text">Mybatis执行流程</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SSM-整合"><span class="nav-number">1.4.</span> <span class="nav-text">SSM 整合</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        ﻿<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">LiHaibo</span>
+
+  
+</div>
+
+
+
+
+
+
+
+
+
+
+
+<span id="busuanzi_container_site_pv">
+    本站总访问量<span id="busuanzi_value_site_pv"></span>次
+</span>
+
+
+  <span class="post-meta-divider">|</span>
+
+
+<span id="busuanzi_container_site_uv">
+  本站访客数<span id="busuanzi_value_site_uv"></span>人次
+</span>
+
+
+  <span class="post-meta-divider">|</span>
+
+
+<div class="theme-info">
+  <div class="powered-by"></div>
+  <span class="post-count">博客全站共8k字</span>
+</div>
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+	
+	
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item=>{
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: false,
+        appId: 'U5S1X31zSH5hmyo6QgUG8R5T-gzGzoHsz',
+        appKey: 'RrLHQWTSyyLbH4sGsQPncz7k',
+        placeholder: 'Just go go',
+        avatar:'mm',
+        guest_info:guest,
+        pageSize:'10' || 10,
+    });
+  </script>
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+  
+  
+		<script type="text/javascript" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js"></script>
+	
+  
+</body>
+</html>
