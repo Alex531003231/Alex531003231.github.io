@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="SSM框架,面试题,Mybaits,">
+  <meta name="keywords" content="全文检索,">
 
 
 
@@ -81,18 +81,18 @@
 
 
 
-<meta name="description" content="持久层框架Mybatis相关面试题—-首先，我们来简单介绍一下Mybatis框架： —-mybatis是一个优秀的基于 java 的持久层框架，它内部封装了 jdbc，使开发者只需要关注 sql 语句本身，而不需要花费精力去处理加载驱动、创建连接、创建 statement 等繁杂的过程。mybatis通过 xml 或注解的方式将要执行的各种statement配置起来，并通过java对象和state">
-<meta name="keywords" content="SSM框架,面试题,Mybaits">
+<meta name="description" content="全文检索什么是全文检索数据的分类​    1.结构化数据        格式固定、长度固定、数据类型固定。        例如数据库中的数据    2.非结构化数据        word文档、pdf文档、邮件、html、txt        格式不固定、长度不固定、数据类型不固定。 数据的查询​    1.结构化数据的查询        SQL语句，查询结构化数据的方法。简单、速度快。    2">
+<meta name="keywords" content="全文检索">
 <meta property="og:type" content="article">
-<meta property="og:title" content="面试题集锦-Mybatis">
-<meta property="og:url" content="https://lhbit.top/2018/11/09/面试题集锦-Mybatis/index.html">
+<meta property="og:title" content="全文检索及lucene入门">
+<meta property="og:url" content="https://lhbit.top/2018/11/24/全文检索及lucene入门/index.html">
 <meta property="og:site_name" content="木子丶Li">
-<meta property="og:description" content="持久层框架Mybatis相关面试题—-首先，我们来简单介绍一下Mybatis框架： —-mybatis是一个优秀的基于 java 的持久层框架，它内部封装了 jdbc，使开发者只需要关注 sql 语句本身，而不需要花费精力去处理加载驱动、创建连接、创建 statement 等繁杂的过程。mybatis通过 xml 或注解的方式将要执行的各种statement配置起来，并通过java对象和state">
+<meta property="og:description" content="全文检索什么是全文检索数据的分类​    1.结构化数据        格式固定、长度固定、数据类型固定。        例如数据库中的数据    2.非结构化数据        word文档、pdf文档、邮件、html、txt        格式不固定、长度不固定、数据类型不固定。 数据的查询​    1.结构化数据的查询        SQL语句，查询结构化数据的方法。简单、速度快。    2">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-11-12T13:41:02.990Z">
+<meta property="og:updated_time" content="2018-11-24T03:39:53.758Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="面试题集锦-Mybatis">
-<meta name="twitter:description" content="持久层框架Mybatis相关面试题—-首先，我们来简单介绍一下Mybatis框架： —-mybatis是一个优秀的基于 java 的持久层框架，它内部封装了 jdbc，使开发者只需要关注 sql 语句本身，而不需要花费精力去处理加载驱动、创建连接、创建 statement 等繁杂的过程。mybatis通过 xml 或注解的方式将要执行的各种statement配置起来，并通过java对象和state">
+<meta name="twitter:title" content="全文检索及lucene入门">
+<meta name="twitter:description" content="全文检索什么是全文检索数据的分类​    1.结构化数据        格式固定、长度固定、数据类型固定。        例如数据库中的数据    2.非结构化数据        word文档、pdf文档、邮件、html、txt        格式不固定、长度不固定、数据类型不固定。 数据的查询​    1.结构化数据的查询        SQL语句，查询结构化数据的方法。简单、速度快。    2">
 
 
 
@@ -122,13 +122,13 @@
 
 
 
-  <link rel="canonical" href="https://lhbit.top/2018/11/09/面试题集锦-Mybatis/">
+  <link rel="canonical" href="https://lhbit.top/2018/11/24/全文检索及lucene入门/">
 
 
 
 
 
-  <title>面试题集锦-Mybatis | 木子丶Li</title>
+  <title>全文检索及lucene入门 | 木子丶Li</title>
   
 
 
@@ -309,7 +309,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://lhbit.top/2018/11/09/面试题集锦-Mybatis/">
+    <link itemprop="mainEntityOfPage" href="https://lhbit.top/2018/11/24/全文检索及lucene入门/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="lihaibo">
@@ -326,7 +326,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">面试题集锦-Mybatis</h1>
+          <h1 class="post-title" itemprop="name headline">全文检索及lucene入门</h1>
         
 
         <div class="post-meta">
@@ -338,8 +338,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-11-09T21:40:58+08:00">
-                2018-11-09
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-11-24T09:41:31+08:00">
+                2018-11-24
               </time>
             
 
@@ -361,8 +361,8 @@
               
               
                 <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-                  <a href="/categories/面试题/" itemprop="url" rel="index">
-                    <span itemprop="name">面试题</span>
+                  <a href="/categories/全文检索/" itemprop="url" rel="index">
+                    <span itemprop="name">全文检索</span>
                   </a>
                 </span>
 
@@ -379,8 +379,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2018/11/09/面试题集锦-Mybatis/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2018/11/09/面试题集锦-Mybatis/" itemprop="commentCount"></span>
+                <a href="/2018/11/24/全文检索及lucene入门/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2018/11/24/全文检索及lucene入门/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -407,7 +407,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  1.3k 字
+                  1.5k 字
                 </span>
               
 
@@ -423,7 +423,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  4 分钟
+                  5 分钟
                 </span>
               
             </div>
@@ -444,35 +444,27 @@
       
 
       
-        <h2 id="持久层框架Mybatis相关面试题"><a href="#持久层框架Mybatis相关面试题" class="headerlink" title="持久层框架Mybatis相关面试题"></a>持久层框架Mybatis相关面试题</h2><p>—-首先，我们来简单介绍一下Mybatis框架：</p>
-<p>—-mybatis是一个优秀的基于 java 的持久层框架，它内部封装了 jdbc，使开发者只需要关注 sql 语句本身，而不需要花费精力去处理加载驱动、创建连接、创建 statement 等繁杂的过程。<br>mybatis通过 xml 或注解的方式将要执行的各种statement配置起来，并通过java对象和statement 中sql 的动态参数进行映射生成最终执行的 sql 语句，最后由 mybatis 框架执行 sql 并将结果映射为 java 对象并返回。采用 ORM 思想解决了实体和数据库映射的问题，对 jdbc进行了封装，屏蔽了 jdbc api 底层访问细节，使我们不用与 jdbc api 打交道，就可以完成对数据库的持久化操作。</p>
-<h3 id="1-什么是框架？什么是mybatis框架"><a href="#1-什么是框架？什么是mybatis框架" class="headerlink" title="1.什么是框架？什么是mybatis框架"></a>1.什么是框架？什么是mybatis框架</h3><p>—-框架（Framework）是整个或部分系统的可重用设计，表现为一组抽象构件及构件实例间交互的方法;另一种定义认为，框架是可被应用开发者定制的应用骨架。前者是从应用方面而后者是从目的方面给出的定义。简而言之，框架其实就是某种应用的半成品，就是一组组件，供你选用完成你自己的系统。简单说就是使用别人搭好的舞台，你来做表演。而且，框架一般是成熟的，不断升级的软件 </p>
-<p>—-MyBatis 是一款优秀的持久层框架，它支持定制化 SQL、存储过程以及高级映射。MyBatis 避免了几乎所有的 JDBC 代码和手动设置参数以及获取结果集。MyBatis 可以使用简单的 XML 或注解来配置和映射原生信息，将接口和 Java 的 POJOs(Plain Ordinary Java Object,普通的 Java对象)映射成数据库中的记录 </p>
-<h3 id="2-Mybatis框架的优点和缺点都有哪些？"><a href="#2-Mybatis框架的优点和缺点都有哪些？" class="headerlink" title="2.Mybatis框架的优点和缺点都有哪些？"></a>2.Mybatis框架的优点和缺点都有哪些？</h3><h4 id="优点："><a href="#优点：" class="headerlink" title="优点："></a>优点：</h4><ol>
-<li>易于上手和掌握。</li>
-<li>sql写在xml里，便于统一管理和优化。 </li>
-<li>解除sql与程序代码的耦合。  </li>
-<li>提供映射标签，支持对象与数据库的orm字段关系映射  </li>
-<li>提供对象关系映射标签，支持对象关系组建维护  </li>
-<li>提供xml标签，支持编写动态sql。 </li>
-</ol>
-<h4 id="缺点："><a href="#缺点：" class="headerlink" title="缺点："></a>缺点：</h4><ol>
-<li>sql工作量很大，尤其是字段多、关联表多时，更是如此。  </li>
-<li>sql依赖于数据库，导致数据库移植性差。  </li>
-<li>由于xml里标签id必须唯一，导致DAO中方法不支持方法重载。  </li>
-<li>字段映射标签和对象关系映射标签仅仅是对映射关系的描述，具体实现仍然依赖于sql。（比如配置了一对多Collection标签，如果sql里没有join子表或查询子表的话，查询后返回的对象是不具备对象关系的，即Collection的对象为null）  </li>
-<li>DAO层过于简单，对象组装的工作量较大。  </li>
-<li>不支持级联更新、级联删除。  </li>
-<li>编写动态sql时,不方便调试，尤其逻辑复杂时。  </li>
-<li>提供的写动态sql的xml标签功能简单（连struts都比不上），编写动态sql仍然受限，且可读性低。  </li>
-<li>使用不当，容易导致N+1的sql性能问题。  </li>
-<li>使用不当，关联查询时容易产生分页bug。  </li>
-<li>若不查询主键字段，容易造成查询出的对象有“覆盖”现象。   </li>
-<li>参数的数据类型支持不完善。（如参数为Date类型时，容易报没有get、set方法，需在参数上加@param）  </li>
-<li>多参数时，使用不方便，功能不够强大。（目前支持的方法有map、对象、注解@param以及默认采用012索引位的方式）  </li>
-<li>缓存使用不当，容易产生脏数据。   </li>
-</ol>
-<h4 id="总结："><a href="#总结：" class="headerlink" title="总结："></a>总结：</h4><p>​    mybatis的优点其实也是mybatis的缺点，正因为mybatis使用简单，数据的可靠性、完整性的瓶颈便更多依赖于程序员对sql的使用水平上了。sql写在xml里，虽然方便了修改、优化和统一浏览，但可读性很低，调试也非常困难，也非常受限，无法像jdbc那样在代码里根据逻辑实现复杂动态sql拼接。mybatis简单看就是提供了字段映射和对象关系映射的jdbc，省去了数据赋值到对象的步骤而已，除此以外并无太多作为，不要把它想象成hibernate那样强大，简单小巧易用上手，方便浏览修改sql就是它最大的优点了。  mybatis适用于小型且程序员能力较低的项目和人群使用，对于中大型项目来说我并不推荐使用，如果觉得hibernate效率低的话（实际上也是使用不当所致，hibernate是实际上是不适用于拥有高负载的工程项目），还不如直接用spring提供的jdbc简单框架（Template），同样支持对象映射。</p>
+        <h1 id="全文检索"><a href="#全文检索" class="headerlink" title="全文检索"></a>全文检索</h1><h2 id="什么是全文检索"><a href="#什么是全文检索" class="headerlink" title="什么是全文检索"></a>什么是全文检索</h2><h3 id="数据的分类"><a href="#数据的分类" class="headerlink" title="数据的分类"></a>数据的分类</h3><p>​    1.结构化数据<br>        格式固定、长度固定、数据类型固定。<br>        例如数据库中的数据<br>    2.非结构化数据<br>        word文档、pdf文档、邮件、html、txt<br>        格式不固定、长度不固定、数据类型不固定。</p>
+<h3 id="数据的查询"><a href="#数据的查询" class="headerlink" title="数据的查询"></a>数据的查询</h3><p>​    1.结构化数据的查询<br>        SQL语句，查询结构化数据的方法。简单、速度快。<br>    2.非结构化数据的查询<br>        从文本文件中找出包含spring单词的文件。<br>        1、目测<br>        2、使用程序吧文档读取到内存中，然后匹配字符串。顺序扫描。<br>        3、把非结构化数据变成结构化数据<br>            先跟根据空格进行字符串拆分，得到一个单词列表，基于单词列表创建一个索引。<br>            然后查询索引，根据单词和文档的对应关系找到文档列表。这个过程叫做全文检索。</p>
+<pre><code>索引：一个为了提高查询速度，创建某种数据结构的集合。
+</code></pre><p>​    3.全文检索<br>        先创建索引然后查询索引的过程叫做全文检索。<br>        索引一次创建可以多次使用。表现为每次查询速度很快。</p>
+<h2 id="全文检索的应用场景"><a href="#全文检索的应用场景" class="headerlink" title="全文检索的应用场景"></a>全文检索的应用场景</h2><p>1.搜索引擎<br>    百度、360搜索、谷歌、搜狗<br>2.站内搜索<br>    论坛搜索、微博、文章搜索<br>3.电商搜索<br>    淘宝搜索、京东搜索<br>4.只要是有搜索的地方就可以使用全文检索技术。</p>
+<h2 id="什么是Lucene"><a href="#什么是Lucene" class="headerlink" title="什么是Lucene"></a>什么是Lucene</h2><p>​    Lucene是一个基于Java开发全文检索工具包。</p>
+<h2 id="Lucene实现全文检索的流程"><a href="#Lucene实现全文检索的流程" class="headerlink" title="Lucene实现全文检索的流程"></a>Lucene实现全文检索的流程</h2><h3 id="创建索引"><a href="#创建索引" class="headerlink" title="创建索引"></a>创建索引</h3><p>​    1.获得文档<br>        原始文档：要基于那些数据来进行搜索，那么这些数据就是原始文档。<br>        搜索引擎：使用爬虫获得原始文档<br>        站内搜索：数据库中的数据。<br>        案例：直接使用io流读取磁盘上的文件。<br>    2.构建文档对象<br>        对应每个原始文档创建一个Document对象<br>        每个document对象中包含多个域（field）<br>        域中保存就是原始文档数据。<br>            域的名称<br>            域的值<br>        每个文档都有一个唯一的编号，就是文档id<br>    3.分析文档<br>        就是分词的过程<br>        1、根据空格进行字符串拆分，得到一个单词列表<br>        2、把单词统一转换成小写。<br>        3、去除标点符号<br>        4、去除停用词<br>        停用词：无意义的词<br>        每个关键词都封装成一个Term对象中。<br>            Term中包含两部分内容：<br>                关键词所在的域<br>                关键词本身<br>            不同的域中拆分出来的相同的关键词是不同的Term。<br>    4.创建索引<br>        基于关键词列表创建一个索引。保存到索引库中。<br>        索引库中：<br>            索引<br>            document对象<br>            关键词和文档的对应关系<br>        通过词语找文档，这种索引的结构叫倒排索引结构。</p>
+<h3 id="查询索引"><a href="#查询索引" class="headerlink" title="查询索引"></a>查询索引</h3><p>​    1.用户查询接口<br>        用户输入查询条件的地方<br>        例如：百度的搜索框<br>    2.把关键词封装成一个查询对象<br>        要查询的域<br>        要搜索的关键词<br>    3.执行查询<br>        根据要查询的关键词到对应的域上进行搜索。<br>        找到关键词，根据关键词找到 对应的文档<br>    4.渲染结果<br>        根据文档的id找到文档对象<br>        对关键词进行高亮显示<br>        分页处理<br>        最终展示给用户看。</p>
+<h2 id="入门程序"><a href="#入门程序" class="headerlink" title="入门程序"></a>入门程序</h2><p>1.创建索引<br>    环境：<br>        需要下载Lucene<br>        <a href="http://lucene.apache.org/" target="_blank" rel="noopener">http://lucene.apache.org/</a><br>        最低要求jdk1.8<br>    工程搭建：<br>        创建一个java工程<br>        添加jar：<br>            lucene-analyzers-common-7.4.0.jar<br>            lucene-core-7.4.0.jar<br>            commons-io.jar</p>
+<pre><code>步骤：
+    1、创建一个Director对象，指定索引库保存的位置。
+    2、基于Directory对象创建一个IndexWriter对象
+    3、读取磁盘上的文件，对应每个文件创建一个文档对象。
+    4、向文档对象中添加域
+    5、把文档对象写入索引库
+    6、关闭indexwriter对象
+</code></pre><p>2.使用luke查看索引库中的内容<br>3.查询索引库<br>    步骤：<br>        1、创建一个Director对象，指定索引库的位置<br>        2、创建一个IndexReader对象<br>        3、创建一个IndexSearcher对象，构造方法中的参数indexReader对象。<br>        4、创建一个Query对象，TermQuery<br>        5、执行查询，得到一个TopDocs对象<br>        6、取查询结果的总记录数<br>        7、取文档列表<br>        8、打印文档中的内容<br>        9、关闭IndexReader对象</p>
+<h2 id="分析器"><a href="#分析器" class="headerlink" title="分析器"></a>分析器</h2><p>​    默认使用的数标准分析器StandardAnalyzer<br>1.查看分析器的分析效果<br>    使用Analyzer对象的tokenStream方法返回一个TokenStream对象。词对象中包含了最终分词结果。<br>    实现步骤：<br>        1）创建一个Analyzer对象，StandardAnalyzer对象<br>        2）使用分析器对象的tokenStream方法获得一个TokenStream对象<br>        3）向TokenStream对象中设置一个引用，相当于数一个指针<br>        4）调用TokenStream对象的rest方法。如果不调用抛异常<br>        5）使用while循环遍历TokenStream对象<br>        6）关闭TokenStream对象<br>2.IKAnalyze的使用方法<br>    1）把IKAnalyzer的jar包添加到工程中<br>    2）把配置文件和扩展词典添加到工程的classpath下<br>    注意：扩展词典严禁使用windows记事本编辑保证扩展词典的编码格式是utf-8<br>    扩展词典：添加一些新词<br>    停用词词典：无意义的词或者是敏感词汇</p>
+<h2 id="索引库维护"><a href="#索引库维护" class="headerlink" title="索引库维护"></a>索引库维护</h2><p>1.添加文档<br>2.删除文档<br>    1）删除全部<br>    2）根据查询、关键词删除文档<br>3.修改文档<br>    修改的原理是先删除后添加</p>
+<p>##索引库查询</p>
+<p>1.使用Query的子类<br>    1）TermQuery<br>        根据关键词进行查询。<br>        需要指定要查询的域及要查询的关键词<br>    2）RangeQuery<br>        范围查询<br>2.使用QueryPaser进行查询<br>    可以对要查询的内容先分词，然后基于分词的结果进行查询。<br>    添加一个jar包<br>    lucene-queryparser-7.4.0.jar</p>
 
       
     </div>
@@ -525,11 +517,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/SSM框架/" rel="tag"><i class="fa fa-tag"></i> SSM框架</a>
-          
-            <a href="/tags/面试题/" rel="tag"><i class="fa fa-tag"></i> 面试题</a>
-          
-            <a href="/tags/Mybaits/" rel="tag"><i class="fa fa-tag"></i> Mybaits</a>
+            <a href="/tags/全文检索/" rel="tag"><i class="fa fa-tag"></i> 全文检索</a>
           
         </div>
       
@@ -542,8 +530,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/11/07/MySql基础/" rel="next" title="MySql基础">
-                <i class="fa fa-chevron-left"></i> MySql基础
+              <a href="/2018/11/18/SSM框架执行流程及底层源码讲解/" rel="next" title="SSM框架执行流程及底层源码讲解">
+                <i class="fa fa-chevron-left"></i> SSM框架执行流程及底层源码讲解
               </a>
             
           </div>
@@ -551,10 +539,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/11/12/Oracle数据库篇二/" rel="prev" title="Oracle数据库篇二">
-                Oracle数据库篇二 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -746,7 +730,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#持久层框架Mybatis相关面试题"><span class="nav-number">1.</span> <span class="nav-text">持久层框架Mybatis相关面试题</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-什么是框架？什么是mybatis框架"><span class="nav-number">1.1.</span> <span class="nav-text">1.什么是框架？什么是mybatis框架</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-Mybatis框架的优点和缺点都有哪些？"><span class="nav-number">1.2.</span> <span class="nav-text">2.Mybatis框架的优点和缺点都有哪些？</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#优点："><span class="nav-number">1.2.1.</span> <span class="nav-text">优点：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#缺点："><span class="nav-number">1.2.2.</span> <span class="nav-text">缺点：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#总结："><span class="nav-number">1.2.3.</span> <span class="nav-text">总结：</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#全文检索"><span class="nav-number">1.</span> <span class="nav-text">全文检索</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#什么是全文检索"><span class="nav-number">1.1.</span> <span class="nav-text">什么是全文检索</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#数据的分类"><span class="nav-number">1.1.1.</span> <span class="nav-text">数据的分类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数据的查询"><span class="nav-number">1.1.2.</span> <span class="nav-text">数据的查询</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#全文检索的应用场景"><span class="nav-number">1.2.</span> <span class="nav-text">全文检索的应用场景</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#什么是Lucene"><span class="nav-number">1.3.</span> <span class="nav-text">什么是Lucene</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Lucene实现全文检索的流程"><span class="nav-number">1.4.</span> <span class="nav-text">Lucene实现全文检索的流程</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#创建索引"><span class="nav-number">1.4.1.</span> <span class="nav-text">创建索引</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#查询索引"><span class="nav-number">1.4.2.</span> <span class="nav-text">查询索引</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#入门程序"><span class="nav-number">1.5.</span> <span class="nav-text">入门程序</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#分析器"><span class="nav-number">1.6.</span> <span class="nav-text">分析器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#索引库维护"><span class="nav-number">1.7.</span> <span class="nav-text">索引库维护</span></a></li></ol></li></ol></div>
             
 
           </div>
